@@ -1,0 +1,19 @@
+@import "../styles/globals.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-link-item {
+  font-size: small;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease-in-out;
+}
+
+.nav-link-item:hover {
+  color: black;
+  font-size: large;
+  text-decoration: underline;
+}
