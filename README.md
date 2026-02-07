@@ -1,290 +1,94 @@
 # Quiz App
 
-一个功能完整的在线考试系统，采用前后端分离架构，支持题库管理、考试组织、成绩记录等核心功能。
+一个在线考试系统，采用前后端分离架构，基于 Bun 运行时构建。
 
-## ✨ 功能特性
-
-- 📝 **题库管理** - 支持多种题型的题目创建、编辑和分类管理
-- 🏢 **部门管理** - 多部门组织架构支持
-- 📊 **考试管理** - 灵活的考试创建和配置
-- 📈 **成绩记录** - 完整的考试记录和成绩统计
-- 🔐 **用户认证** - 安全的用户登录和权限管理
-- 🤖 **AI 辅助** - 智能题目生成和分析功能
-  <<<<<<<<< Temporary merge branch 1
-- # 🎨 **现代化 UI** - 基于 Shadcn UI 的美观界面
-- 🎨 **现代化 UI** - 基于 Base UI 和 Tailwind CSS 的美观界面
-  > > > > > > > > > Temporary merge branch 2
-
-## 📁 项目结构
+## 项目结构
 
 ```
-├── admin/                    # React 管理后台
-│   ├── src/
-│   │   ├── pages/           # 页面组件
-│   │   │   ├── dashboard/   # 仪表板页面
-│   │   │   └── index.home.tsx
-│   │   ├── layouts/         # 布局组件
-│   │   ├── assets/          # 静态资源
-│   │   └── router.tsx       # 路由配置
-│   └── package.json
-├── server/                   # Express 服务器
-│   ├── src/
-│   │   ├── api/             # API 路由
-│   │   │   └── v1/          # API v1 版本
-│   │   ├── configs/         # 配置文件
-│   │   ├── middleware/      # 中间件
-│   │   ├── utils/           # 工具函数
-│   │   └── test/            # 测试文件
-│   └── package.json
-└── shared/                   # 共享代码
-    └── models/              # 数据模型定义
+quiz-app/
+├── admin/          # 前端管理后台（React）
+├── server/         # 后端服务（Express）
+└── shared/         # 前后端共享的类型定义
 ```
 
-## 🚀 快速开始
+## 技术栈
 
-## 🚀 快速开始
-
-### 前置要求
-
-- [Bun](https://bun.com) v1.3.8+
-
-### 安装步骤
-
-1. **克隆项目**
-   <<<<<<<<< Temporary merge branch 1
-
-```bash
-git clone <repository-url>
-cd quiz-app
-```
-
-2. **配置环境变量**
-
-```bash
-cp server/.env.example server/.env
-# 编辑 server/.env 文件，配置数据库连接等信息
-```
-
-3. **安装依赖并启动**
-
-**服务器端：**
-
-```bash
-cd server
-bun install
-bun run dev      # 开发模式，默认运行在 http://localhost:3000
-```
-
-**管理后台：**
-
-```bash
-cd admin
-bun install
-bun dev          # 开发模式
-bun start        # 生产模式
-bun run build    # 构建生产版本
-```
-
-## 🛠️ 技术栈
-
-### 前端（Admin）
-
-- **React 19** - 最新的 React 框架
-- **TanStack Router** - 类型安全的路由解决方案
-- **Tailwind CSS 4** - 实用优先的 CSS 框架
-- **Base UI** - 无样式的可访问组件库
-- **Bun** - 高性能 JavaScript 运行时
-
-### 后端（Server）
-
-- **Express 5** - 快速、极简的 Web 框架
-- **TypeScript** - 类型安全的 JavaScript 超集
-- **Mongoose** - MongoDB 对象建模工具
-- **Helmet** - 安全中间件
-- **Joi** - 数据验证库
-- **Bun** - 高性能运行时和包管理器
-
-## 📡 API 端点
-
-服务器提供以下 RESTful API 端点：
-
-- `/api/v1/health` - 健康检查
-- `/api/v1/auth` - 用户认证
-- `/api/v1/users` - 用户管理
-- `/api/v1/departments` - 部门管理
-- `/api/v1/questions` - 题目管理
-- `/api/v1/question-banks` - 题库管理
-- `/api/v1/exams` - 考试管理
-- `/api/v1/records` - 成绩记录
-
-## ⚙️ 环境配置
-
-服务器需要配置 `.env` 文件，参考 `server/.env.example`：
-
-```bash
-# 数据库配置
-MONGODB_URI=mongodb://localhost:27017/quiz-app
-
-# 服务器配置
-PORT=3000
-NODE_ENV=development
-
-# JWT 配置
-JWT_SECRET=your-secret-key
-JWT_EXPIRES_IN=7d
-
-# 其他配置...
-```
-
-## 🧪 测试
-
-```bash
-cd server
-bun test                    # 运行所有测试
-bun test src/test/api/      # 运行 API 测试
-```
-
-## 📦 构建部署
-
-### 构建前端
-
-```bash
-cd admin
-bun run build
-# 构建产物在 dist/ 目录
-```
-
-### 部署服务器
-
-```bash
-cd server
-NODE_ENV=production bun app.ts
-```
-
-## 🔧 开发说明
-
-=========
-
-```bash
-git clone <repository-url>
-cd quiz-app
-```
-
-2. **配置环境变量（可选）**
-
-```bash
-cp server/.env.example server/.env
-```
-
-## 🛠️ 技术栈
-
-**前端**
+### 前端（admin）
 
 - React 19
-- TanStack Router
-- Tailwind CSS 4
-- Base UI
-- Bun
+- TanStack Router - 类型安全的路由
+- Tailwind CSS 4 - 样式框架
+- Base UI - 无样式组件库
+- Bun - 运行时和构建工具
 
-**后端**
+### 后端（server）
 
-- Express 5
-- TypeScript
-- Mongoose
-- Helmet & Joi
-- Bun
+- Express 5 - Web 框架
+- TypeScript - 类型系统
+- Helmet - 安全中间件
+- CORS - 跨域支持
+- Joi - 数据验证
+- Mongoose - MongoDB ODM（已安装但未配置）
+- Bun - 运行时
 
-## 📡 API 端点
+## 快速开始
 
-- `/api/v1/health` - 健康检查
-- `/api/v1/auth` - 用户认证
-- `/api/v1/users` - 用户管理
-- `/api/v1/departments` - 部门管理
-- `/api/v1/questions` - 题目管理
-- `/api/v1/question-banks` - 题库管理
-- `/api/v1/exams` - 考试管理
-- `/api/v1/records` - 成绩记录
+### 环境要求
 
-## ⚙️ 环境配置
+- Bun >= 1.3.8
 
-服务器可以配置 `.env` 文件，参考 `server/.env.example`：
-
-```bash
-# 服务器运行端口
-SERVER_PORT=3000
-```
-
-## 🧪 测试
+### 启动后端服务
 
 ```bash
 cd server
-bun test                    # 运行所有测试
-bun test src/test/api/      # 运行 API 测试
+bun install
+bun run dev
 ```
 
-## 📦 构建部署
+服务默认运行在 `http://localhost:3000`
+
+可选：复制 `.env.example` 为 `.env` 自定义端口
+
+```bash
+cp .env.example .env
+```
+
+### 启动前端应用
+
+```bash
+cd admin
+bun install
+bun dev
+```
 
 ### 构建前端
 
 ```bash
 cd admin
 bun run build
-# 构建产物在 dist/ 目录
 ```
 
-### 部署服务器
+构建产物输出到 `admin/dist/` 目录
 
-```bash
-cd server
-NODE_ENV=production bun app.ts
-```
+## API 路由
 
-## 🔧 开发说明
+当前已实现的 API 端点：
 
-> > > > > > > > > Temporary merge branch 2
+- `GET /api/v1/health` - 服务健康检查
+- `/api/v1/auth` - 用户认证
+- `/api/v1/user` - 用户管理
+- `/api/v1/department` - 部门管理
+- `/api/v1/question` - 题目管理
+- `/api/v1/question-bank` - 题库管理
+- `/api/v1/record` - 考试记录
 
-- 使用 **Bun** 作为包管理器和运行时，提供极快的开发体验
-- 前后端共享 TypeScript 类型定义（`shared/models/`）
-- 支持热重载，修改代码自动刷新
-- 遵循 RESTful API 设计规范
+## 开发说明
 
-## 🤝 贡献指南
+- 使用 Bun 作为包管理器和运行时
+- 前端支持热重载（`--hot` 模式）
+- 后端支持文件监听（`--watch` 模式）
+- 共享类型定义位于 `shared/models/` 目录
 
-欢迎提交 Issue 和 Pull Request！
+## 许可证
 
-1. Fork 本项目
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
-
-## 📄 许可证
-
-本项目采用 **Apache License 2.0** 许可证。详见 [LICENSE](./LICENSE) 和 [LICENSE.zh-CN](./LICENSE.zh-CN)。
-
-使用本项目时，您需要：
-
-- ✅ 保留原始许可证和版权声明
-- ✅ 在修改文件时标注修改内容
-- ✅ 在分发时包含许可证副本
-- ✅ 声明对原始代码的修改
-
-## 📚 相关链接
-
-- [Bun 官方文档](https://bun.com)
-- [React 文档](https://react.dev)
-- [TanStack Router](https://tanstack.com/router)
-- [Express 文档](https://expressjs.com)
-- [MongoDB 文档](https://www.mongodb.com/docs)
-- [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-## 💬 支持
-
-如有问题或建议，请通过以下方式联系：
-
-- 提交 [Issue](../../issues)
-- 发起 [Discussion](../../discussions)
-
----
-
-⭐ 如果这个项目对你有帮助，请给个 Star！
+Apache License 2.0 - 详见 [LICENSE](./LICENSE) 和 [LICENSE.zh-CN](./LICENSE.zh-CN)
