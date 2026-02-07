@@ -17,3 +17,11 @@
   font-size: large;
   text-decoration: underline;
 }
+
+.root {
+  isolation: isolate;
+}
+
+body {
+  position: relative;
+}
