@@ -1,6 +1,5 @@
 #!/usr/bin/env bun
 import plugin from "bun-plugin-tailwind";
-import { TanStackRouterPlugin } from "@tanstack/router-plugin/bun";
 import { existsSync } from "fs";
 import { rm } from "fs/promises";
 import path from "path";
@@ -35,7 +34,7 @@ Example:
 }
 
 const toCamelCase = (str: string): string =>
-  str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+  str.replace(/-([a-z])/g, (g) => g[1]?.toUpperCase() ?? g);
 
 const parseValue = (value: string): any => {
   if (value === "true") return true;
@@ -49,8 +48,8 @@ const parseValue = (value: string): any => {
   return value;
 };
 
-function parseArgs(): Partial<Bun.BuildConfig> {
-  const config: Partial<Bun.BuildConfig> = {};
+function parseArgs(): Record<string, any> {
+  const config: Record<string, any> = {};
   const args = process.argv.slice(2);
 
   for (let i = 0; i < args.length; i++) {
@@ -77,7 +76,9 @@ function parseArgs(): Partial<Bun.BuildConfig> {
     let value: string;
 
     if (arg.includes("=")) {
-      [key, value] = arg.slice(2).split("=", 2) as [string, string];
+      const parts = arg.slice(2).split("=", 2);
+      key = parts[0] ?? "";
+      value = parts[1] ?? "";
     } else {
       key = arg.slice(2);
       value = args[++i] ?? "";
@@ -86,9 +87,13 @@ function parseArgs(): Partial<Bun.BuildConfig> {
     key = toCamelCase(key);
 
     if (key.includes(".")) {
-      const [parentKey, childKey] = key.split(".");
-      config[parentKey] = config[parentKey] || {};
-      config[parentKey][childKey] = parseValue(value);
+      const parts = key.split(".");
+      const parentKey = parts[0];
+      const childKey = parts[1];
+      if (parentKey && childKey) {
+        config[parentKey] = config[parentKey] || {};
+        config[parentKey][childKey] = parseValue(value);
+      }
     } else {
       config[key] = parseValue(value);
     }
@@ -132,7 +137,7 @@ console.log(
 const result = await Bun.build({
   entrypoints,
   outdir,
-  plugins: [plugin, TanStackRouterPlugin()],
+  plugins: [plugin],
   minify: true,
   target: "browser",
   sourcemap: "linked",
