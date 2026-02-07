@@ -1,6 +1,7 @@
 # Quiz App
 
 一个功能完整的在线考试系统，采用前后端分离架构，支持题库管理、考试组织、成绩记录等核心功能。
+一个功能完整的在线考试系统，采用前后端分离架构，支持题库管理、考试组织、成绩记录等核心功能。
 
 ## ✨ 功能特性
 
@@ -35,13 +36,36 @@
 │   └── package.json
 └── shared/                   # 共享代码
     └── models/              # 数据模型定义
+├── admin/                    # React 管理后台
+│   ├── src/
+│   │   ├── pages/           # 页面组件
+│   │   │   ├── dashboard/   # 仪表板页面
+│   │   │   └── index.home.tsx
+│   │   ├── layouts/         # 布局组件
+│   │   ├── assets/          # 静态资源
+│   │   └── router.tsx       # 路由配置
+│   └── package.json
+├── server/                   # Express 服务器
+│   ├── src/
+│   │   ├── api/             # API 路由
+│   │   │   └── v1/          # API v1 版本
+│   │   ├── configs/         # 配置文件
+│   │   ├── middleware/      # 中间件
+│   │   ├── utils/           # 工具函数
+│   │   └── test/            # 测试文件
+│   └── package.json
+└── shared/                   # 共享代码
+    └── models/              # 数据模型定义
 ```
+
+## 🚀 快速开始
 
 ## 🚀 快速开始
 
 ### 前置要求
 
 - [Bun](https://bun.com) v1.3.8+
+- MongoDB 数据库
 
 ### 安装步骤
 
@@ -127,6 +151,8 @@ SERVER_PORT=3000
 cd server
 bun test                    # 运行所有测试
 bun test src/test/api/      # 运行 API 测试
+bun test                    # 运行所有测试
+bun test src/test/api/      # 运行 API 测试
 ```
 
 ## 📦 构建部署
@@ -141,7 +167,21 @@ bun run build
 
 ### 部署服务器
 
+## 📦 构建部署
+
+### 构建前端
+
 ```bash
+cd admin
+bun run build
+# 构建产物在 dist/ 目录
+```
+
+### 部署服务器
+
+```bash
+cd server
+NODE_ENV=production bun app.ts
 cd server
 NODE_ENV=production bun app.ts
 ```
@@ -165,6 +205,26 @@ NODE_ENV=production bun app.ts
 
 ## 📄 许可证
 
+## 🔧 开发说明
+
+- 使用 **Bun** 作为包管理器和运行时，提供极快的开发体验
+- 前后端共享 TypeScript 类型定义（`shared/models/`）
+- 支持热重载，修改代码自动刷新
+- 遵循 RESTful API 设计规范
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+## 📄 许可证
+
+本项目采用 **Apache License 2.0** 许可证。详见 [LICENSE](./LICENSE) 和 [LICENSE.zh-CN](./LICENSE.zh-CN)。
 本项目采用 **Apache License 2.0** 许可证。详见 [LICENSE](./LICENSE) 和 [LICENSE.zh-CN](./LICENSE.zh-CN)。
 
 使用本项目时，您需要：
@@ -173,6 +233,12 @@ NODE_ENV=production bun app.ts
 - ✅ 在修改文件时标注修改内容
 - ✅ 在分发时包含许可证副本
 - ✅ 声明对原始代码的修改
+- ✅ 保留原始许可证和版权声明
+- ✅ 在修改文件时标注修改内容
+- ✅ 在分发时包含许可证副本
+- ✅ 声明对原始代码的修改
+
+## 📚 相关链接
 
 ## 📚 相关链接
 
@@ -181,7 +247,23 @@ NODE_ENV=production bun app.ts
 - [TanStack Router](https://tanstack.com/router)
 - [Express 文档](https://expressjs.com)
 - [MongoDB 文档](https://www.mongodb.com/docs)
+- [Bun 官方文档](https://bun.com)
+- [React 文档](https://react.dev)
+- [TanStack Router](https://tanstack.com/router)
+- [Express 文档](https://expressjs.com)
+- [MongoDB 文档](https://www.mongodb.com/docs)
 - [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+## 💬 支持
+
+如有问题或建议，请通过以下方式联系：
+
+- 提交 [Issue](../../issues)
+- 发起 [Discussion](../../discussions)
+
+---
+
+⭐ 如果这个项目对你有帮助，请给个 Star！
 
 ## 💬 支持
 
